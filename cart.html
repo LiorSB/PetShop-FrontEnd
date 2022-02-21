@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>D-pot</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">	
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- Responsive-->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets --> 
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body>
+	<!-- section banner start -->
+	<div class="header-main">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div><a href="index.html"><img src="images/logo.png"></a></div>
+				</div>
+				<div class="col-md-8">
+					<div class="menu_text">
+                        <ul>
+                            <li class="last"><button onclick="clearData()">Clear Data</button></li>
+                            <li class="active">
+                                <div id="myNav" class="overlay">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div class="overlay-content">
+                                        <a href="index.html">Home</a>
+                                        <a href="shop.html">Shop</a>
+                                        <a href="cart.html">Cart</a>
+                                        <a href="handle_stock.html">Handle Stock</a>
+                                        <a href="sale_managment.html">Sale Managment</a>
+                                    </div>
+                                </div>
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+                        </div>	
+                           </li>
+						</ul>
+					</div>
+			</div>
+		</div>
+    </div>
+	<!-- section get in touch start -->
+    <div class="touch_section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-sm-12">
+				    <h1 class="get_taital"><strong><span style="color: #ffffff;">Order</span>  Summary</strong></h1>
+    			</div>
+    		</div>
+    		<div class="email_box">
+                    <div class="input_main">
+                        <div class="container" id="cartItems">
+                        </div>
+                        <div id="totalPriceID" style="text-align: center;">
+                            <h1 style="display:inline; color:#f7941d; font-size:50pt;">Total Price: $</h1>
+                            <h1 id="totalPrice" style="display:inline; color:#f7941d; font-size:50pt;"></h1>
+                        </div>
+
+                        <div class="container">
+                           <form action="/action_page.php" id="purchaseForm">
+                               <div class="form-group">
+                                   <input type="text" class="email-bt" placeholder="Full Name" id="Name">
+                               </div>
+                               <div class="form-group">
+                                   <input type="text" class="email-bt" placeholder="Your Phone Number" id="Phone">
+                               </div>
+                               <div class="form-group">
+                                   <input type="text" class="email-bt" placeholder="Your E-mail" id="Email">
+                               </div>
+                               <div class="form-group">
+                                   <input type="text" class="email-bt" placeholder="Payment Details" id="Payment">
+                               </div>
+
+                               <div class="form-group">
+                                   <textarea class="massage-bt" placeholder="Message" rows="5" id="Message"></textarea>
+                               </div>
+                           </form>   
+                       </div> 
+                       <div class="send_btn">
+                        <button type="button" class="main_bt" onclick="purchase()"><a href="#">Purchase</a></button>
+                       </div>                      
+                    </div>
+    		</div>
+    	</div>
+    </div>
+    <div class="touch_section_2">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-sm-12">
+    				<h1 class="our_texts">Our Newsletter</h1>
+    				<div class="input-group mb-3">
+                        <input class="email_bt" type="text" class="form-control" placeholder="Enter your email">
+                     <div class="input-group-append">
+                        <button class="subscribe_bt" class="btn btn-primary" type="Subscribe">Subscribe</button>  
+                     </div>
+                    </div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- section get in touch end -->
+
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="js/owl.carousel.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+      $(document).ready(function(){
+      $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         $(".zoom").hover(function(){
+         
+         $(this).addClass('transition');
+         }, function(){
+         
+         $(this).removeClass('transition');
+         });
+         });
+         </script> 
+
+
+      <script>
+          function openNav() {
+              document.getElementById("myNav").style.width = "100%";
+          }
+
+          function closeNav() {
+              document.getElementById("myNav").style.width = "0%";
+          }
+
+          function removeFromCart(itemName)
+          {
+              // Get cart and store item from localStorage
+              let cartItem = JSON.parse(localStorage.getItem(itemName + "_Cart"));
+              let storeItem = JSON.parse(localStorage.getItem(itemName));
+
+              // Get quantity back from the cart item
+              storeItem.quantity += cartItem.quantity;
+
+              localStorage.setItem(itemName, JSON.stringify(storeItem));
+              localStorage.removeItem(itemName + "_Cart");
+
+              let cartArray = JSON.parse(localStorage.getItem("Cart"));
+
+              // Remove item from cart array and save to localStorage
+              if (cartArray)
+              {
+                  let indexOfItem = cartArray.indexOf(itemName + "_Cart");
+
+                  if (indexOfItem > -1)
+                  {
+                      cartArray.splice(indexOfItem, 1);
+                      localStorage.setItem("Cart", JSON.stringify(cartArray));
+                  }
+              }
+
+              document.getElementById(itemName).remove();
+              document.getElementById('totalPrice').innerHTML -= cartItem.quantity * cartItem.price;
+          }
+
+          function clearData()
+          {
+              localStorage.clear();
+              document.getElementById('cartItems').innerHTML = "";
+              document.getElementById('totalPrice').innerHTML = 0;
+          }
+
+          function showCartItems()
+          {
+              let cartArray = JSON.parse(localStorage.getItem("Cart"));
+              let allItems = document.getElementById('cartItems');
+              let totalPrice = 0;
+
+              allItems.innerHTML = "";
+
+              // Create new array incase the cart array is empty
+              if (!cartArray)
+              {
+                  cartArray = new Array();
+              }
+
+              for (let i = 0; i < cartArray.length; i++)
+              {
+                  let item = JSON.parse(localStorage.getItem(cartArray[i]));
+
+                  // Create elements/text nodes/buttons
+                  let image = document.createElement('img');
+                  let name = document.createTextNode(item.name);
+                  let price = document.createTextNode("Price: $" + item.price);
+                  let quantity = document.createTextNode("Quantity: " + item.quantity);
+                  let removeFromCartButton = document.createElement("button");
+
+                  totalPrice += item.price * item.quantity;
+
+                  // Create divs
+                  let imageDiv = document.createElement('div');
+                  let nameDiv = document.createElement('div');
+                  let priceDiv = document.createElement('div');
+                  let quantityDiv = document.createElement('div');
+                  let mainDiv = document.createElement('div');
+
+                  image.src = item.picture;
+                  removeFromCartButton.innerHTML = "Remove from cart";
+                  removeFromCartButton.onclick = function () { removeFromCart(item.name) };
+
+                  // Append elements/text nodes/buttons to divs
+                  imageDiv.appendChild(image);
+                  nameDiv.appendChild(name);
+                  quantityDiv.appendChild(quantity);
+                  priceDiv.appendChild(price);
+
+                  // Append divs to main div
+                  mainDiv.appendChild(imageDiv);
+                  mainDiv.appendChild(nameDiv);
+                  mainDiv.appendChild(priceDiv);
+                  mainDiv.appendChild(quantityDiv);
+                  mainDiv.appendChild(removeFromCartButton);
+
+                  mainDiv.setAttribute("id", item.name);
+
+                  allItems.appendChild(mainDiv);
+              }
+
+              document.getElementById('totalPrice').innerHTML = totalPrice;
+          }
+
+          function purchase()
+          {
+              let cartArray = JSON.parse(localStorage.getItem("Cart"));
+
+              // Incase no item exists return
+              if (!cartArray) {
+                  return;
+              }
+
+              // Get value from input feilds
+              let name = document.getElementById("Name").value;
+              let phone = document.getElementById("Phone").value;
+              let email = document.getElementById("Email").value;
+              let payment = document.getElementById("Payment").value;
+              let message = document.getElementById("Message").value;
+
+              // Alert incase not all needed feilds were filled
+              if (!name || !phone || !email || !payment)
+              {
+                  alert("Please fill the field: 'Full Name', 'Phone Number', 'E-mail' and 'Payment'");
+                  return;
+              }
+
+              // Remove items from cart and place them in localStorage as purchased items
+              let purchaseItemsArray = new Array();
+
+              for (let i = 0; i < cartArray.length; i++)
+              {
+                  let cartItem = JSON.parse(localStorage.getItem(cartArray[i]));
+                  purchaseItemsArray.push(cartItem);
+                  document.getElementById(cartItem.name).remove();
+                  localStorage.removeItem(cartArray[i])
+              }
+
+              localStorage.removeItem("Cart");
+              document.getElementById('totalPrice').innerHTML = 0;
+
+              document.getElementById("purchaseForm").reset();
+
+              let purchaseID = localStorage.getItem("nextPurchaseID");
+
+              if (!purchaseID)
+              {
+                  purchaseID = 1;
+              }
+
+              localStorage.setItem("nextPurchaseID", purchaseID + 1);
+
+              let purchaseDetails = { purchaseID: purchaseID, name: name, phone: phone, email: email, payment: payment, message: message, items: purchaseItemsArray };
+              localStorage.setItem("Purchase_Details_" + purchaseID, JSON.stringify(purchaseDetails));
+
+              alert("Thank you for purchasing from us. Please come again!");
+          }
+
+          showCartItems();
+      </script>
+</body>
+</html>
+

@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>D-pot</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body>
+    <!-- section banner start -->
+    <div class="header-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div><a href="index.html"><img src="images/logo.png"></a></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="menu_text">
+                        <ul>
+                            <li class="last"><button onclick="clearData()">Clear Data</button></li>
+                            <li class="active">
+                                <div id="myNav" class="overlay">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div class="overlay-content">
+                                        <a href="index.html">Home</a>
+                                        <a href="shop.html">Shop</a>
+                                        <a href="cart.html">Cart</a>
+                                        <a href="handle_stock.html">Handle Stock</a>
+                                        <a href="sale_managment.html">Sale Managment</a>
+                                    </div>
+                                </div>
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+                    </div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- section gallery start -->
+    <div class="gallery_main layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="about_taital"><strong><span style="color: #ffffff;">Current</span> Stock</strong></h1>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="stock_configuration">
+
+        </div>
+    </div>
+    <div class="gallery_section_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h1 class="pet_taital">Add New Item to the Storage</h1>
+                    <div class="container">
+                        <form action="/action_page.php" id="createItemForm">
+                            <div class="form-group">
+                                <input type="text" class="email-bt" placeholder="Name" id="Name">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="massage-bt" placeholder="Description" rows="5" id="Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="email-bt" placeholder="Price" id="Price" onkeypress="return onlyNumberKey(event)">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="email-bt" placeholder="Picture URL" id="Picture">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="email-bt" placeholder="Quantity" id="Quantity" onkeypress="return onlyNumberKey(event)">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="email-bt" placeholder="Manufacturer" id="Manufacturer">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="massage-bt" placeholder="Tags" rows="5" id="Tags"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="createItemForm" style="float:left; font-weight:800">Date of Entrance to Stock:</label>
+                                <input type="date" id="EnterStockTime">
+                            </div>
+                            <div class="form-group">
+                                <label for="createItemForm" style="float:left; font-weight:800">Choose a Category:</label>
+                                <select id="Category" style="display:none">
+                                    <option value="Pet_Equipment">Pet Equipment</option>
+                                    <option value="Pet_Food">Pet Food</option>
+                                    <option value="Animal_Care">Animal Care</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <br /><br /><br /><br />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="send_btn">
+                        <button type="button" class="main_bt" onclick="addItem()"><a href="#">Add Item</a></button>
+                    </div>
+                    <div class="form-group">
+                        <br /><br />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="dog_img"><img src="images/dog-img.png" style="max-width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- section gallery end -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+
+            $(".zoom").hover(function () {
+
+                $(this).addClass('transition');
+            }, function () {
+
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
+
+    <script src="StoreItems.js"></script>
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        function updateQuantity(itemName) {
+            let item = JSON.parse(localStorage.getItem(itemName));
+            item.quantity = document.getElementById(itemName + "_quantityInput").value;
+            localStorage.setItem(itemName, JSON.stringify(item));
+        }
+
+        function onlyNumberKey(evt) {
+            // Only ASCII charactar in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function initialize() {
+            let isInitialized = localStorage.getItem("isInitialized");
+            let allItems = document.getElementById('stock_configuration');
+
+            allItems.innerHTML = "";
+
+            let storeItemsFromStorage = JSON.parse(localStorage.getItem("storeItems"));
+
+            if (!storeItemsFromStorage)
+            {
+                storeItemsFromStorage = storeItems;
+                localStorage.setItem("storeItems", JSON.stringify(storeItems));
+            }
+
+            for (let i = 0; i < storeItemsFromStorage.length; i++)
+            {
+                // Create elements
+                let image = document.createElement('img');
+                let name = document.createTextNode(storeItemsFromStorage[i].name);
+                let description = document.createTextNode("Description: " + storeItemsFromStorage[i].description);
+                let price = document.createTextNode("Price: $" + storeItemsFromStorage[i].price);
+                let manufacturer = document.createTextNode("Made by " + storeItemsFromStorage[i].manufacturer);
+
+                // Get an item from the localStorage and check if it exists and update quantity accordingly
+                let item = JSON.parse(localStorage.getItem(storeItemsFromStorage[i].name));
+                let quantity;
+
+                if (!item)
+                {
+                    quantity = storeItemsFromStorage[i].quantity;
+                }
+                else
+                {
+                    quantity = JSON.parse(localStorage.getItem(storeItemsFromStorage[i].name)).quantity;
+                }
+
+                // Create quantity elements
+                let quantityButton = document.createElement("button");
+                let quantityInput = document.createElement("input");
+
+                quantityButton.innerHTML = "Update Quantity";
+                quantityButton.onclick = function () { updateQuantity(storeItemsFromStorage[i].name) };
+                quantityInput.setAttribute("type", "text");
+                quantityInput.defaultValue = quantity;
+                quantityInput.setAttribute("id", storeItemsFromStorage[i].name + "_quantityInput");
+                quantityInput.onkeypress = function () { return onlyNumberKey(event) };
+
+                // Create divs for the elements
+                let imageDiv = document.createElement('div');
+                let nameDiv = document.createElement('div');
+                let descriptionDiv = document.createElement('div');
+                let priceDiv = document.createElement('div');
+                let manufacturerDiv = document.createElement('div');
+                let quantityDiv = document.createElement('div');
+                let mainDiv = document.createElement('div');
+
+                image.src = storeItemsFromStorage[i].picture;
+
+                // Append each element to the fitting div
+                imageDiv.appendChild(image);
+                nameDiv.appendChild(name);
+                descriptionDiv.appendChild(description);
+                manufacturerDiv.appendChild(manufacturer);
+                priceDiv.appendChild(price);
+                quantityDiv.appendChild(quantityInput);
+                quantityDiv.appendChild(quantityButton);
+
+                // Append divs to the main div
+                mainDiv.appendChild(imageDiv);
+                mainDiv.appendChild(nameDiv);
+                mainDiv.appendChild(descriptionDiv);
+                mainDiv.appendChild(priceDiv);
+                mainDiv.appendChild(manufacturerDiv);
+                mainDiv.appendChild(quantityDiv);
+
+                allItems.appendChild(mainDiv);
+
+                // Check if the page has already been initialized
+                if (!isInitialized)
+                {
+                    localStorage.setItem(storeItemsFromStorage[i].name, JSON.stringify(storeItemsFromStorage[i]));
+                }
+
+                localStorage.setItem("isInitialized", true);
+            }
+        }
+
+        function clearData()
+        {
+            localStorage.clear();
+            initialize();
+        }
+
+        function addItem()
+        {
+            // Get value from input feilds
+            let name = document.getElementById("Name").value;
+            let description = document.getElementById("Description").value;
+            let price = document.getElementById("Price").value;
+            let pictureURL = document.getElementById("Picture").value;
+            let quantity = document.getElementById("Quantity").value;
+            let entranceStockTime = document.getElementById("EnterStockTime").value;
+            let manufacturer = document.getElementById("Manufacturer").value;
+            let tags = document.getElementById("Tags").value;
+            let category = document.getElementById("Category").value;
+
+            // Check if all needed input feilds were filled, if not alert
+            if (!name || !price || !pictureURL || !quantity || !entranceStockTime || !category)
+            {
+                alert("Please fill in: 'Name', 'Price', 'Picture URL', 'Quantity', 'Etrance to Stock Time' and 'Category'!");
+                return;
+            }
+
+            // Alert incase the item already exists localStorage
+            if (localStorage.getItem(name))
+            {
+                alert("This item already exists!");
+                return;
+            }
+
+            // Create new item
+            let item = {
+                name: name,
+                description: description,
+                price: price,
+                picture: pictureURL,
+                quantity: quantity,
+                category: category,
+                EnterStockTime: entranceStockTime,
+                manufacturer: manufacturer,
+                tagArry: tags
+            };
+
+            // Save in localStorage
+            localStorage.setItem(item.name, JSON.stringify(item));
+
+            // Get stored items array from localStorage and add a new item to the array
+            let fromStorage = JSON.parse(localStorage.getItem("storeItems"));
+
+            fromStorage.push(item);
+            localStorage.setItem("storeItems", JSON.stringify(fromStorage));
+
+            initialize();
+        }
+
+        initialize();
+    </script>
+
+</body>
+</html>

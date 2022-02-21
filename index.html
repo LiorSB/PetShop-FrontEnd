@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>D-pot</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">	
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- Responsive-->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets --> 
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    .myButtons {
+        background-color: #f7941d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes animatezoom {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+	<!-- section banner start -->
+	<div class="header_section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div><a href="index.html"><img src="images/logo.png"></a></div>
+				</div>
+				<div class="col-md-8">
+					<div class="menu_text">
+                        <ul>
+                            <li class="last"><button class="myButtons" onclick="clearData()">Clear Data</button></li>
+                            <li class="last">
+                                <!-- Button to open the modal login form -->
+                                <button class="myButtons" onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+                                <!-- The Modal -->
+                                <div id="id01" class="modal">
+                                    <span onclick="document.getElementById('id01').style.display='none'"
+                                          class="close" title="Close Modal">&times;</span>
+
+                                    <!-- Modal Content -->
+                                    <form class="modal-content animate">
+                                        <div class="container">
+                                            <label for="psw"><b>Password</b></label>
+                                            <input id="passwordInput" type="password" placeholder="Enter Password" name="psw" required>
+
+                                            <button type="button" style="background-color: #f7941d" onclick="confirmLoginDetails()">Login</button>
+                                        </div>
+
+                                        <div class="container" style="background-color:#f1f1f1">
+                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="active">
+                                <div id="myNav" class="overlay">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div class="overlay-content">
+                                        <a href="index.html">Home</a>
+                                        <a href="shop.html">Shop</a>
+                                        <a href="cart.html">Cart</a>
+                                        <a class="adminAcess" id="handlestock" href="handle_stock.html">Handle Stock</a>
+                                        <a class="adminAcess" id="salemanagment" href="sale_managment.html">Sale Managment</a>
+                                    </div>
+                                </div>
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+</div>	
+                            </li>
+						</ul>
+					</div>
+                <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+			</div>
+		</div>
+		<div class="banner_main">
+			<div class="container">
+				<div class="ram">
+					<div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="taital">Best Pet Shop</h1>
+                        </div>
+				    </div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- section banner end -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="js/owl.carousel.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+      $(document).ready(function(){
+      $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         $(".zoom").hover(function(){
+         
+         $(this).addClass('transition');
+         }, function(){
+         
+         $(this).removeClass('transition');
+         });
+         });
+         </script> 
+
+   <script>
+       function openNav()
+       {
+            document.getElementById("myNav").style.width = "100%";
+       }
+
+       function closeNav()
+       {
+            document.getElementById("myNav").style.width = "0%";
+       }
+
+       function clearData()
+       {
+           localStorage.clear();
+       }
+
+       // Get the modal
+       var modal = document.getElementById('id01');
+
+       // When the user clicks anywhere outside of the modal, close it
+       window.onclick = function (event) {
+           if (event.target == modal) {
+               modal.style.display = "none";
+           }
+       }
+
+       // I've decided to not go fully through with the login function and leave both manager and user options open so it wont interupt with the checking process
+       function confirmLoginDetails()
+       {
+           if (document.getElementById("passwordInput").value != "Admin")
+           {
+               alert("Wrong Password!");
+               return;
+           }
+
+           document.getElementById("handlestock").style.visibility = "visible";
+           document.getElementById("salemanagment").style.visibility = "visible";
+       }
+</script>
+</body>
+</html>

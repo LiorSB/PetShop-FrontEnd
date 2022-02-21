@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>D-pot</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body>
+    <!-- section banner start -->
+    <div class="header-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div><a href="index.html"><img src="images/logo.png"></a></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="menu_text">
+                        <ul>
+                            <li class="last"><button onclick="clearData()">Clear Data</button></li>
+                            <li class="active">
+                                <div id="myNav" class="overlay">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div class="overlay-content">
+                                        <a href="index.html">Home</a>
+                                        <a href="shop.html">Shop</a>
+                                        <a href="cart.html">Cart</a>
+                                        <a href="handle_stock.html">Handle Stock</a>
+                                        <a href="sale_managment.html">Sale Managment</a>
+                                    </div>
+                                </div>
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+                            </div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- section about start -->
+    <div class="about_section">
+        <div class="about_text">
+            <div class="container">
+                <h1 class="about_taital_1"><strong><span style="color: #f7941d;">Pet</span> Shop</strong></h1>
+                <p class="magna_text">Choose one of the bottom categories to purchase items for your pet:</p>
+                <div class="about_bt">
+                    <button class="more_bt" id="pet_equipment" onclick="showItems('Pet_Equipment')">Pet Equipment</button>
+                    <button class="more_bt" id="pet_food" onclick="showItems('Pet_Food')">Pet Food</button>
+                    <button class="more_bt" id="animal_care" onclick="showItems('Animal_Care')">Animal Care</button>
+                </div>
+                <div id="allItems" class="container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- section about end -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+
+            $(".zoom").hover(function () {
+
+                $(this).addClass('transition');
+            }, function () {
+
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
+
+    <script src="StoreItems.js"></script>
+
+    <script>
+        function openNav()
+        {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav()
+        {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        function showItems(category)
+        {
+            equipmentButton = document.getElementById('pet_equipment');
+            foodButton = document.getElementById('pet_food');
+            careButton = document.getElementById('animal_care');
+
+            // Show the items that belong to the chosen category
+            if (category == 'Pet_Equipment')
+            {
+                equipmentButton.style.backgroundColor = "#f7941d";
+                foodButton.style.backgroundColor = "black";
+                careButton.style.backgroundColor = "black";
+            }
+            else if (category == 'Pet_Food')
+            {
+                equipmentButton.style.backgroundColor = "black";
+                foodButton.style.backgroundColor = "#f7941d";
+                careButton.style.backgroundColor = "black";
+            }
+            else
+            {
+                equipmentButton.style.backgroundColor = "black";
+                foodButton.style.backgroundColor = "black";
+                careButton.style.backgroundColor = "#f7941d";
+            }
+
+            let allCat = document.getElementsByClassName('allCategories');
+
+            for (let i = 0; i < allCat.length; i++)
+            {
+                if (!allCat[i].classList.contains(category))
+                {
+                    allCat[i].style.display = "none";
+                }
+                else
+                {
+                    allCat[i].style.display = "block";
+                }
+            }
+        }
+
+        function addToCart(itemName)
+        {
+            let storeItem = JSON.parse(localStorage.getItem(itemName));
+
+            // Alert incase the item is out of stock
+            if (storeItem.quantity <= 0)
+            {
+                alert(itemName + " is out of stock!");
+                return;
+            }
+
+            // Lower the items quantity and update localStorage
+            storeItem.quantity -= 1;
+            localStorage.setItem(itemName, JSON.stringify(storeItem));
+
+            let cartItem = JSON.parse(localStorage.getItem(itemName + "_Cart"))
+
+            // Incase cartItem already exists add +1 to quantity, if not get it from storeItem and set quantity to 1
+            if (cartItem)
+            {
+                cartItem.quantity += 1;
+            }
+            else
+            {
+                cartItem = storeItem;
+                cartItem.quantity = 1;
+            }
+
+            // Update sale in cart
+            let salePriceString = document.getElementById(itemName + "_Sale");
+
+            if (salePriceString)
+            {
+                salePriceString = salePriceString.innerHTML.replace("Sale Price: $", "");
+                cartItem.price = salePriceString;
+            }
+
+            localStorage.setItem(itemName + "_Cart", JSON.stringify(cartItem));
+
+            let cartArray = JSON.parse(localStorage.getItem("Cart"));
+
+            if (!cartArray)
+            {
+                cartArray = new Array();
+            }
+
+            if (!cartArray.includes(itemName + "_Cart")) // Note: The includes method is not supported in Edge 13 (and earlier versions).
+            {
+                cartArray.push(itemName + "_Cart");
+                localStorage.setItem("Cart", JSON.stringify(cartArray));
+            }
+        }
+    </script>
+
+    <script>
+        function initialize()
+        {
+            let saleByQuantity = JSON.parse(localStorage.getItem("SaleByQuantity"));
+            let saleByDays = JSON.parse(localStorage.getItem("SaleByDays"));
+
+            let isInitialized = localStorage.getItem("isInitialized");
+            let allItems = document.getElementById('allItems');
+            allItems.innerHTML = ""; 
+
+            let storeItemsFromStorage = JSON.parse(localStorage.getItem("storeItems"));
+
+            // Incase a storeItems array already exists save it to localStorage, if not save the current
+            if (storeItemsFromStorage)
+            {
+                storeItems = storeItemsFromStorage;
+            }
+            else
+            {
+                localStorage.setItem("storeItems", JSON.stringify(storeItems));
+            }
+
+            for (let i = 0; i < storeItems.length; i++)
+            {
+                // Create elements/text nodes/buttons
+                let image = document.createElement('img');
+                let name = document.createTextNode(storeItems[i].name);
+                let description = document.createTextNode("Description: " + storeItems[i].description);
+                let price = document.createTextNode("Price: $" + storeItems[i].price);
+                let manufacturer = document.createTextNode("Made by " + storeItems[i].manufacturer);
+                let addToCartButton = document.createElement("button");
+
+                // Create divs
+                let imageDiv = document.createElement('div');
+                let nameDiv = document.createElement('div');
+                let descriptionDiv = document.createElement('div');
+                let priceDiv = document.createElement('div');
+                let manufacturerDiv = document.createElement('div');
+                let mainDiv = document.createElement('div');
+
+                image.src = storeItems[i].picture;
+                addToCartButton.innerHTML = "Add to cart";
+                addToCartButton.onclick = function () { addToCart(storeItems[i].name) };
+
+                // Append elements/text nodes/buttons to divs
+                imageDiv.appendChild(image);
+                nameDiv.appendChild(name);
+                descriptionDiv.appendChild(description);
+                manufacturerDiv.appendChild(manufacturer);
+                priceDiv.appendChild(price);
+
+                let salePrice = null;
+
+                // Incase there is a sale update the sale price
+                if (saleByQuantity)
+                {
+                    // Check if the item is applicable to be in sale
+                    if (storeItems[i].quantity >= saleByQuantity.quantity)
+                    {
+                        salePrice = storeItems[i].price - (storeItems[i].price * saleByQuantity.percentage / 100);
+                    }
+                }
+
+                if (saleByDays)
+                {
+                    // To calculate the time difference of two dates 
+                    let Difference_In_Time = Date.now().getTime() - storeitems[i].EnterStockTime.getTime();
+
+                    // To calculate the no. of days between two dates 
+                    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+                    // Check if the item is applicable to be in sale
+                    if (Difference_In_Days >= saleByDays.days)
+                    {
+                        let tempSalePrice = storeItems[i].price - (storeItems[i].price * saleByDays.percentage / 100);
+
+                        // Save the lower sale
+                        if (!salePrice || salePrice > tempSalePrice)
+                        {
+                            salePrice = tempSalePrice;
+                        }
+                    }
+                }
+
+                // Append divs to main div
+                mainDiv.appendChild(imageDiv);
+                mainDiv.appendChild(nameDiv);
+                mainDiv.appendChild(descriptionDiv);
+                mainDiv.appendChild(priceDiv);
+
+                // Incase a sale exists create its own elements and div
+                if (salePrice)
+                {
+                    let salePriceText = document.createTextNode("Sale Price: $" + salePrice);
+                    let salePriceDiv = document.createElement('div');
+
+                    salePriceDiv.setAttribute("id", storeItems[i].name + "_Sale");
+                    salePriceDiv.style.color = "red";
+                    salePriceDiv.appendChild(salePriceText);
+
+                    mainDiv.appendChild(salePriceDiv);
+                }
+
+                // Append divs to main div
+                mainDiv.appendChild(manufacturerDiv);
+                mainDiv.appendChild(addToCartButton);
+
+                mainDiv.classList.add(storeItems[i].category);
+                mainDiv.classList.add('allCategories');
+
+                allItems.appendChild(mainDiv);
+
+                // Incase it's the first initialize set the data in the localStorage
+                if (!isInitialized)
+                {
+                    localStorage.setItem(storeItems[i].name, JSON.stringify(storeItems[i])); 
+                }
+
+                localStorage.setItem("isInitialized", true);
+            }
+
+            showItems('Pet_Equipment');
+        }
+
+        function clearData()
+        {
+            localStorage.clear();
+            initialize();
+        }
+
+        initialize();
+    </script>
+</body>
+</html>
+
